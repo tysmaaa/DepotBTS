@@ -1,15 +1,20 @@
 <?php
-require_once './src/Championnat.php';
-require_once './src/Equipe.php';
+
+require "./vendor/autoload.php";
+
+use App\dossier1\Personne;
+use App\Equipe;
+use App\Championnat;
 
 // Créer un championnat
-$ligue1 = new Championnat("Ligue 1");
+$ligue1 = new App\Championnat("Ligue 1");
 echo $ligue1->getNom();
 
 // Créer 2 équipes
 // psg est une référence sur un objet de la classe Equipe
-$psg = new Equipe("PSG", "Luis", "1987");
-$om = new Equipe("OM", "mitroglou", "1998");
+$psg = new App\Equipe("PSG", "Luis", "1987");
+$om = new App\Equipe("OM", "mitroglou", "1998");
+$sochaux = new App\Equipe("Sochaux", "toto", "1952");
 
 $ligue1->ajouterEquipe($psg);
 $ligue1->ajouterEquipe($om);
@@ -23,3 +28,9 @@ foreach ($ligue1->getEquipes() as $equipe) {
     echo $equipe->getNom().PHP_EOL;
 
 }
+
+// Créer une personne
+$personne = new Personne("maya");
+echo $personne->getNom();
+
+dump($ligue1);
